@@ -1,0 +1,106 @@
+﻿@page
+@model PresentationLayer.Pages.Products.ProductFormModel
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <h1>?????</h1>
+    </div>
+    <div class="row">
+        <form method="post" enctype='multipart/form-data'>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                
+                @if (Model.Product != null) {
+                    <input asp-for="@Model.Product.ProductName" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Product name" value=@Model.Product.ProductName/>
+                 }
+                else
+                {
+                    <input asp-for="@Model.Product.ProductName" type="text" class="form-control" id="exampleInputEmail1" placeholder="Product name" />
+                }
+                
+            </div>
+            <div class="form-group">
+                <label>Quantity per unit</label>
+                @if (Model.Product != null)
+                {
+
+                    <input asp-for="@Model.Product.QuantityPerUnit" type="number" class="form-control" placeholder="Quantity" value=@Model.Product.QuantityPerUnit>
+                }
+                else
+                {
+                    <input asp-for="@Model.Product.QuantityPerUnit" type="number" class="form-control" placeholder="Quantity">
+                }
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Unit price:</label>
+                
+                @if (Model.Product != null)
+                {
+
+                    <input asp-for="@Model.Product.UnitPrice" type="number" class="form-control" placeholder="Price" value=@Model.Product.UnitPrice>
+                }
+                else
+                {
+                    <input asp-for="@Model.Product.UnitPrice" type="number" class="form-control" placeholder="Price">
+                }
+            </div>
+            <div class="form-group">
+                <label>Supplier</label>
+                @if (Model.Product != null)
+                {
+                    <select asp-for="@Model.Product.SupplierId" value="@Model.Product.SupplierId">
+                        @for (int i = 0; i < Model.Suppliers.Count; i++)
+                        {
+                            <option value="@Model.Suppliers.ElementAt(i).SupplierId">@Model.Suppliers.ElementAt(i).CompanyName</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <select asp-for="@Model.Product.SupplierId">
+                        @for (int i = 0; i < Model.Suppliers.Count; i++)
+                        {
+                            <option value="@Model.Suppliers.ElementAt(i).SupplierId">@Model.Suppliers.ElementAt(i).CompanyName</option>
+                        }
+                    </select>
+                }
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Category</label>
+                @if (Model.Product != null)
+                {
+                    <select asp-for="@Model.Product.CategoryId" value="@Model.Product.CategoryId">
+                        @for (int i = 0; i < Model.Categories.Count; i++)
+                        {
+                            <option value="@Model.Categories.ElementAt(i).CategoryId">@Model.Categories.ElementAt(i).CategoryName</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <select asp-for="@Model.Product.CategoryId">
+                        @for (int i = 0; i < Model.Categories.Count; i++)
+                        {
+                            <option value="@Model.Categories.ElementAt(i).CategoryId">@Model.Categories.ElementAt(i).CategoryName</option>
+                        }
+                    </select>
+                }
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Product image</label>
+                @if (Model.Product != null)
+                {
+                    <input asp-for="Image" type="file" class="form-control-file" value="@Model.Image.">
+                    <input hidden asp-for="@Model.Product.ProductImage" value="@Model.Product.ProductImage"/>
+                }
+                else
+                {
+                    <input asp-for="Image" type="file" class="form-control-file">
+                }
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

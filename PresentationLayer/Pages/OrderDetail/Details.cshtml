@@ -1,0 +1,22 @@
+﻿@page
+@model PresentationLayer.Pages.OrderDetail.IndexModel
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-3">OrderId</div>
+        <div>@Model.OrderDetail.OrderId</div>
+    </div>
+    <div class="row">
+        <div class="col-3">ProductId</div>
+        <div>@Model.OrderDetail.ProductId</div>
+    </div>
+    <div class="row">
+        <div class="col-3">Unit Price</div>
+        <div>@Model.OrderDetail.UnitPrice</div>
+    </div>
+    <div class="row">
+        <div class="col-3">Quantity</div>
+        <div>@Model.OrderDetail.Quantity</div>
+    </div>
+</div>

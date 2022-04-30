@@ -1,0 +1,37 @@
+﻿@page
+@model PresentationLayer.Pages.Customer.IndexModel
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <h1>Customer</h1>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <th>Id</th>
+            <th>Contact Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th></th>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Customers.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.Customers.ElementAt(i).CustomerId</td>
+                        <td>@Model.Customers.ElementAt(i).ContactName</td>
+                        <td>@Model.Customers.ElementAt(i).Address</td>
+                        <td>@Model.Customers.ElementAt(i).Phone</td>
+                        <td>
+                            <a href="../Customer/Create?id=@Model.Customers.ElementAt(i).CustomerId">Edit</a> |
+                            <a href="../Customer/Details?id=@Model.Customers.ElementAt(i).CustomerId">Details</a> |
+                            <a href="../Customer/Delete?id=@Model.Customers.ElementAt(i).CustomerId" onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

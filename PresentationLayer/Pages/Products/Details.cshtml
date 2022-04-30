@@ -1,0 +1,38 @@
+﻿@page
+@model PresentationLayer.Pages.Products.DetailsModel
+@{
+}
+
+<div>
+    <h1>Details</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">Product Id</div>
+            <div>@Model.Product.ProductId</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Product Name</div>
+            <div>@Model.Product.ProductName</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Product Quantity</div>
+            <div>@Model.Product.QuantityPerUnit</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Product Unit Price</div>
+            <div>@Model.Product.UnitPrice</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Product Supplier</div>
+            <div>@Model.Product.Supplier.CompanyName</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Product Category</div>
+            <div>@Model.Product.Category.CategoryName</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Product Image</div>
+            <div><img src="@Url.Content($"~/images/{Model.Product.ProductImage}")" style="width: 300px" alt="Nothing"/></div>
+        </div>
+    </div>
+</div>

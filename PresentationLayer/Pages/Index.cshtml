@@ -1,0 +1,57 @@
+﻿@page "Index"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <h1>Product</h1>
+    </div>
+    <div class="row">
+        <a href="Products/ProductForm" class="btn btn-success">
+            Add new
+        </a>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+
+            <thead class="thead-dark">
+                <tr>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>Description</td>
+                    <td>ImageUrl</td>
+                    <td>Category</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Products.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.Products.ElementAt(i).ProductName</td>
+                        <td>@Model.Products.ElementAt(i).UnitPrice</td>
+                        <td>@Model.Products.ElementAt(i).Supplier.CompanyName</td>
+                        <td>@Model.Products.ElementAt(i).ProductImage</td>
+                        <td>@Model.Products.ElementAt(i).Category.CategoryName</td>
+                        <td>
+                            <a href="/Products/ProductForm?id=@Model.Products.ElementAt(i).ProductId">
+                                Edit
+                            </a>
+                            |
+                            <a href="/Products/Details?id=@Model.Products.ElementAt(i).ProductId">
+                                Details
+                            </a>
+                            |
+                            <a href="/Products/Delete?id=@Model.Products.ElementAt(i).ProductId" onclick="return confirm('Are you sure?')">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

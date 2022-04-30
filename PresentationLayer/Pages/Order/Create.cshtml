@@ -1,0 +1,37 @@
+﻿@page
+@model PresentationLayer.Pages.Order.CreateModel
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Order.CustomerId">Customer</label>
+                <input asp-for="@Model.Order.CustomerId" type="text" class="form-control" placeholder="Customer ID" value="@Model.Order.CustomerId">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Order.OrderDate"></label>
+                <input asp-for="@Model.Order.OrderDate" type="date" class="form-control" value="@Model.Order.OrderDate">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Order.ShippedDate"></label>
+                <input asp-for="@Model.Order.ShippedDate" type="date" class="form-control" value="@Model.Order.ShippedDate">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Order.RequiredDate"></label>
+                <input asp-for="@Model.Order.RequiredDate" type="date" class="form-control" value="@Model.Order.RequiredDate">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Order.ShipAddress"></label>
+                <input asp-for="@Model.Order.ShipAddress" type="text" class="form-control" placeholder="Ship Address" value="@Model.Order.ShipAddress">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Order.Freight"></label>
+                <input asp-for="@Model.Order.Freight" type="number" class="form-control" placeholder="Freight" value="@Model.Order.Freight">
+            </div>
+            @Html.ValidationSummary()
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

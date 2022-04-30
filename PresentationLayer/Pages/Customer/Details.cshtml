@@ -1,0 +1,25 @@
+﻿@page
+@model PresentationLayer.Pages.Customer.DetailsModel
+@{
+}
+<div>
+    <h1>Details</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">Username</div>
+            <div>@Model.Customer.CustomerId</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Contact Name</div>
+            <div>@Model.Customer.ContactName</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Phone</div>
+            <div>@Model.Customer.Phone</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Address</div>
+            <div>@Model.Customer.Address</div>
+        </div>
+    </div>
+</div>

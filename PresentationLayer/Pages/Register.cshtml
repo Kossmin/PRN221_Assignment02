@@ -1,0 +1,35 @@
+﻿@page
+@model PresentationLayer.Pages.RegisterModel
+@{
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <h1>Register</h1>
+    </div>
+    <div class="row">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="AccountInfo.Fullname"></label>
+                <input asp-for="AccountInfo.Fullname" type="text" class="form-control" placeholder="Enter your name">
+                <span asp-validation-for="AccountInfo.Fullname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountInfo.Username"></label>
+                <input asp-for="AccountInfo.Username" type="text" class="form-control" placeholder="Enter username">
+                <span asp-validation-for="AccountInfo.Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountInfo.Password">Password</label>
+                <input asp-for="AccountInfo.Password" type="password" class="form-control" placeholder="Password">
+                <span asp-validation-for="AccountInfo.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" asp-for="ConfirmedPassword" placeholder="Confirm Password">
+                <span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@page
+@model PresentationLayer.Pages.Order.IndexModel
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <h1>
+            Orders
+        </h1>
+    </div>
+    @if (User.IsInRole("Member")) { 
+    <div class="row">
+        <a class="btn btn-success" href="../Order/Create">
+            Add New
+        </a>
+    </div>}
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Customer Name</th>
+                    <th>Ordered Date</th>
+                    <th>Required Date</th>
+                    <th>Shipped Date</th>
+                    <th>Freight</th>
+                    <th>Ship Address</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Orders.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.Orders.ElementAt(i).OrderId</td>
+                        <td>@Model.Orders.ElementAt(i).Customer.ContactName</td>
+                        <td>@Model.Orders.ElementAt(i).OrderDate</td>
+                        <td>@Model.Orders.ElementAt(i).RequiredDate</td>
+                        <td>@Model.Orders.ElementAt(i).ShippedDate</td>
+                        <td>@Model.Orders.ElementAt(i).Freight</td>
+                        <td>@Model.Orders.ElementAt(i).ShipAddress</td>
+                        <td>
+                            <a href="../Order/Details?id=@Model.Orders.ElementAt(i).OrderId">Details</a> |
+                            @if (User.IsInRole("Member"))
+                            {
+                                <a href="../Order/Create?id=@Model.Orders.ElementAt(i).OrderId">Edit</a> <span>|</span>
+                                <a href = "../Order/Delete?id=@Model.Orders.ElementAt(i).OrderId" onclick = "return confirm('Are you sure?')" > Delete </a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

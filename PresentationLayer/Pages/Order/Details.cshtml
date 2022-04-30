@@ -1,0 +1,41 @@
+﻿@page
+@model PresentationLayer.Pages.Order.DetailsModel
+@{
+}
+<div class="container">
+    @if (User.IsInRole("Member")) { 
+        <div class="row">
+            <a class="btn btn-success" href="../OrderDetail/Create?orderid=@Model.id">
+                Add New
+            </a>
+        </div>
+    }
+    <div class="row">
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.OrderDetails.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model.OrderDetails.ElementAt(i).OrderId</td>
+                            <td>
+                                <a href="../OrderDetail/Details?orderid=@Model.OrderDetails.ElementAt(i).OrderId&productid=@Model.OrderDetails.ElementAt(i).ProductId">Details</a> |
+                                @if (User.IsInRole("Member"))
+                                {
+                                    <a href="../Order/Create?id=@Model.OrderDetails.ElementAt(i).OrderId">Edit</a> <span>|</span>
+                                    <a href="../OrderDetail/Delete?orderid=@Model.OrderDetails.ElementAt(i).OrderId&productid=@Model.OrderDetails.ElementAt(i).ProductId" onclick="return confirm('Are you sure?')"> Delete </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

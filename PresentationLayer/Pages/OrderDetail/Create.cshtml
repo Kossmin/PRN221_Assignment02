@@ -1,0 +1,28 @@
+﻿@page
+@model PresentationLayer.Pages.OrderDetail.CreateModel
+@{
+}
+<div class="container">
+    <div class="row">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.orderid">Order Id</label>
+                <input asp-for="@Model.orderid" type="text" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.OrderDetail.ProductId">Product Id</label>
+                <input asp-for="@Model.OrderDetail.ProductId" type="number" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.OrderDetail.Quantity">Quantity</label>
+                <input asp-for="@Model.OrderDetail.Quantity" type="number" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.OrderDetail.UnitPrice" />
+                <input asp-for="@Model.OrderDetail.UnitPrice" type="number" class="form-control" />
+            </div>
+            @Html.ValidationSummary()
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

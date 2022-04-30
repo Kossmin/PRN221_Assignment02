@@ -1,0 +1,33 @@
+﻿@page
+@model PresentationLayer.Pages.Customer.CreateModel
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Customer.CustomerId">Email address</label>
+                <input disabled asp-for="@Model.Customer.CustomerId" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Customer.Password"></label>
+                <input asp-for="@Model.Customer.Password" type="password" class="form-control" placeholder="Password" value="@Model.Customer.Password">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Customer.ContactName"></label>
+                <input asp-for="@Model.Customer.ContactName" type="text" class="form-control" placeholder="Contact Name">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Customer.Phone"></label>
+                <input asp-for="@Model.Customer.Phone" type="tel" class="form-control" placeholder="Phone">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Customer.Address"></label>
+                <input asp-for="@Model.Customer.Address" type="text" class="form-control" placeholder="Address">
+            </div>
+            @Html.ValidationSummary();
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

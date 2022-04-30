@@ -1,0 +1,47 @@
+﻿@page "List"
+@model PresentationLayer.Pages.ListModel
+@{
+}
+<div class="container">
+    <h1>Menu</h1>
+    <div class="row mb-3 justify-content-end">
+        <form class="form-inline" method="post" style="width:100%">
+            <div class="form-group">
+                <input asp-for="searchString" class="form-control mr-2" placeholder="Search the product" type="text" />
+            </div>
+            <div class="form-group col-2">
+                <label id="amount" class=""></label>
+                <input asp-for="amount" min="0" max="50000000" value="0" id="priceRange" type="range" class="form-control-range mr-2">
+            </div>
+            <button type="submit">Filter</button>
+        </form>
+    </div>
+    <div class="card-deck">
+        @for (int i = 0; i < Model.Products.Count; i++)
+        {
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="@Url.Content($"~/images/{Model.Products.ElementAt(i).ProductImage}")" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Products.ElementAt(i).ProductName</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="/Products/Details?id=@Model.Products.ElementAt(i).ProductId" class="btn btn-primary">More Info</a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+@section scripts{ 
+    <script>
+        var slider = document.getElementById("priceRange");
+        var output = document.getElementById("amount");
+        output.innerHTML = slider.value + "$"; // Display the default slider value
+
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function () {
+            output.innerHTML = this.value + "$";
+        }
+    </script>
+}
